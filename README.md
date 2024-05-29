@@ -16,21 +16,21 @@ function showData(){
 }
 ```
 
-#### Explanations
+### Explanations
 
 This code give us error in `let` part  because in javascript , there is a term called `hoisting`
 
-##### What is hoisting
+### What is hoisting
 
 Hoisting is the process of declaring variable in top of the function
 
-#### Hoisting in let,const and var
+### Hoisting in let,const and var
 
 
 let and const also get hoisted but with no initialized values so we will get an initialization error.
 Var will get hoisted as empty value as initial value
 
-#### More Information
+### More Information
 
 JavaScript Hoisting refers to the process whereby the interpreter appears to move the declaration of functions, variables, classes, or imports to the top of their scope, prior to execution of the code.
 
@@ -70,3 +70,36 @@ function sayHello() {
 }
 
 ```
+
+### `Hoisting 02`
+
+```js
+for(var i = 0; i < 5 ; i++){
+setTimeout(() => console.log(i),5) // it will log "5" five times
+/*
+Output :
+5
+5
+5
+5
+5
+*/
+}
+
+for(let i=0; i < 5 ; i++){
+    setTimeout(() => console.log(i) , 5) // it will log different value of i
+    /*
+  Output:
+  0
+  1
+  2
+  3
+  4
+    */
+}
+````
+
+#### So why does this happen?
+
+in first loop  : Var declaration will be moved on top of the function.Javascript will refer each timeout as a common variable so when the loop will end it will print the final value of i
+in second loop : Let wont get hoisted so the value of i will change in each loop , which results different value of i
