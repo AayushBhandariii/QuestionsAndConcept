@@ -103,3 +103,47 @@ for(let i=0; i < 5 ; i++){
 
 in first loop  : Var declaration will be moved on top of the function.Javascript will refer each timeout as a common variable so when the loop will end it will print the final value of i
 in second loop : Let wont get hoisted so the value of i will change in each loop , which results different value of i
+
+### `Javascript This`
+```js
+const Employee = {
+    skills : 15,
+    monthlySalary(){
+        return this.skills * 30;
+    },
+    yearlySalary : () => 365 * this.skills,
+}
+console.log(Employee.monthlySalary()); // 450
+console.log(Employee.yearlySalary()) // NAN
+```
+
+#### so why does this happen ?
+
+in the `monthlySalary` function , the value of this is refers to the current object(in this case its `Employee`)
+and the function is called in `Employee` Context so it will return 450 value
+
+but in `yearlySalary` function , it is being called through arrow function but the value of this in arrow function refers
+to the parent element in this case it is `Window` but there is no variable name skills in window so it will return "NAN"
+`
+
+#### Now let’s see how this behaves inside various code blocks.
+
+1. `this` inside `global context`
+- this inside a global js file always points to window object.
+
+2. `this` inside a `function`
+- this inside a function points to window object.
+
+3. `this` inside `constructor function`
+- this inside a constructor function points to the contructor keys.
+
+4. `this` inside a `function` inside an `object`
+- this inside an object’s function points to the instance of the object.
+
+5. `this` inside an `inner function`
+- this inside an inner function points to the window object.
+
+6. `this` inside a `function` and `strict mode` is on.
+- "Undefined" , this is because, when ES3 released, ECMA has concern, may be developers forgot to invoke constructor with new keyword.
+
+#### Inside an `arrow` function, `this` has no `scope` of itself. It always points to the scope of `parent`.
