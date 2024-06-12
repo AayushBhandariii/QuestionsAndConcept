@@ -217,3 +217,26 @@ c.greeting = "Axy"
 console.log(c.greeting) // Axy
 console.log(a.greeting) // bye
 ```
+
+### `Constructor 01`
+
+```js
+let a = 108;
+let b = new Number(108);
+let c = 108
+
+console.log(a == b); // true
+console.log(a === b); // false
+console.log(b === c) // false
+
+```
+
+#### So why does this happen
+
+#### `Constructor in JavaScript`
+
+when we use constructor like `new Number()` or anything our data type is set to be object
+
+
+in line number 5 : it only compares primitive value so we get true
+in line number six and seven : we are checking both type and value so we get false
